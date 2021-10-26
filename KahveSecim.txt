@@ -1,0 +1,218 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Example
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //for (degisken_tanimlama; şart; artırım_mik)
+            //{ 
+
+            //}
+            //Console.WriteLine("1");
+            //Console.WriteLine("2");
+            //Console.WriteLine("2");
+            //Console.WriteLine("2");
+            //Console.WriteLine("2");
+            //Console.WriteLine("2");
+            //Console.WriteLine("2");
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    Console.WriteLine();
+            //    for (int j = 0; j < i; j++)
+            //    {
+            //        Console.Write("*");
+            //    }
+            //}
+            /*
+             *
+             **
+             ***
+             ****
+             
+             */
+            //Kullanıcıdan alınan 10 sayının toplamını ekrana yazınız.
+
+            //int sayi1, sayi2, sayi3, sayi4, sayi5, sayi6, sayi7, sayi8, sayi9, sayi10, toplam = 0;
+            //int[] sayilar = new int[10];
+            //int toplam = 0;
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    //$ işareti string içerisinde placeholder kullanmana yarar
+
+            //    Console.WriteLine($"Lütfen {i + 1}. sayıyı giriniz.");
+            //    sayilar[i] = Convert.ToInt32(Console.ReadLine());
+            //    toplam += sayilar[i];
+            //}
+
+            //Console.WriteLine("sayıların Toplamı=>" + toplam);
+
+            //Console.ReadKey();
+
+
+
+            //ekrandan bir sayı girilecek rakamların toplamı ekrana yazdırılacak
+            //Console.Write("Lütfen bir sayı giriniz.");
+            //int sayi = Convert.ToInt32(Console.ReadLine());
+            ////
+            //int toplam = 0;
+            //string metinselSayi = sayi.ToString();
+            //for (int i = 0; i < metinselSayi.Length; i++)
+            //{
+            //    toplam += Convert.ToInt32(metinselSayi[i].ToString());
+            //}
+            //Console.WriteLine(toplam);
+            //Console.ReadKey();
+
+
+            //Kullanıcıdan sayı alın sayının karesini ekranda yazdırın
+
+            //do
+            //{
+            //    try
+            //    {
+            //        //Hata çıkabilecek kod satırlarını buraya yazıyorum.
+            //        Console.Write("Lütfen bir sayı giriniz.");
+            //        int sayi = Convert.ToInt32(Console.ReadLine());
+            //        Console.WriteLine(sayi * sayi);
+            //        break; //döngüde kullanıldığında Döngüden çıkar
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine(ex.Message);
+            //    }
+            //} while (true);
+
+            //Console.ReadKey();
+
+
+
+            //Kullanıcıdan kahve seçimini alın
+            //isim alın
+            //Kahveler
+            //  -Filtre kahve 8
+            //  -Gingerbread Frappuccino => 15TL
+            //  -Toffee Nut Frappuccino => 20TL
+            //  -Caramel Cream Frappuccino® => 22TL
+            //  -Buzlu Toffee Nut Latte => 18TL
+            //  -White Chocolate Mocha => 14TL
+            //  -Buzlu Cappuccino => 35TL
+
+            //short => Küçük boy 1
+            //Tall => 1.25
+            //Grande => 1.50
+
+            //Sonrasıda ekstra isteği
+            //Çikolata => 5 TL
+            //Kahve poşeti 10gr => 25 TL
+            //Sandiviç 15 TL
+            //Kek => 36 TL
+
+            decimal Toplam = 0;
+
+            string[] kahveler = { "(1) Filtre kahve", "(2) Gingerbread Frappuccino", "(3) Toffee Nut Frappuccino", "(4) Caramel Cream Frappuccino®", "(5) Buzlu Toffee Nut Latte", "(6) White Chocolate Mocha", "(7) Buzlu Cappuccino" };
+            decimal[] kahvefiyatlari = { 8m, 15m, 20m, 22m, 18m, 14m, 35m };
+
+            string[] kahveBoylari = { "(1) Short", "(2) Tall", "(3) Grande" };
+            decimal[] kahveBoylariCarpan = { 1, 1.25m, 1.50m };
+
+            string[] eksMenu = { "(1) Çikolata", "(2) Kahve poşeti 10gr", "(3) Sandiviç", "(4) Kek" };
+            decimal[] eksMenuFiyat = { 5m, 25m, 15m, 36m };
+
+
+            Console.Write("Lütfen adınızı giriniz..:");
+            string name = Console.ReadLine();
+
+            try
+            {
+                do
+                {
+                    Console.Clear();
+                    string toplamTutarMetin = $"Toplam tutar=>{Toplam.ToString("N2")}";
+                    Console.SetCursorPosition((Console.WindowWidth + toplamTutarMetin.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(toplamTutarMetin);
+                    Console.SetCursorPosition(Console.CursorLeft, 1);
+
+
+                    for (int i = 0; i < kahveler.Length; i++)
+                    {
+                        Console.WriteLine(kahveler[i]);
+                    }
+                    Console.Write("Lütfen kahve seçimini giriniz..:");
+                    int kahveSecim = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("------------------------------");
+
+                    for (int i = 0; i < kahveBoylari.Length; i++)
+                    {
+                        Console.WriteLine(kahveBoylari[i]);
+                    }
+
+                    Console.Write("Lütfen Kahve boyunu giriniz.");
+                    int kahveBoyuSecim = Convert.ToInt32(Console.ReadLine());
+
+                    Toplam += kahvefiyatlari[(kahveSecim - 1)] * kahveBoylariCarpan[kahveBoyuSecim - 1];
+
+                    Console.Write("Başka Kahve istermisiniz..? (Y/N)");
+                    ConsoleKeyInfo cevap = Console.ReadKey();
+                    if (cevap.Key == ConsoleKey.N)
+                    {
+                        break;
+                    }
+
+                } while (true);
+
+                Console.Write("Eks ürün istermisiniz. (Y/N)");
+                ConsoleKeyInfo eksMenuCvp = Console.ReadKey();
+
+                if (eksMenuCvp.Key == ConsoleKey.Y)
+                {
+                    do
+                    {
+                        Console.Clear();
+                        string toplamTutarMetin = $"Toplam tutar=>{Toplam.ToString("N2")}";
+                        Console.SetCursorPosition((Console.WindowWidth + toplamTutarMetin.Length) / 2, Console.CursorTop);
+                        Console.WriteLine(toplamTutarMetin);
+                        Console.SetCursorPosition(Console.CursorLeft, 1);
+
+                        for (int i = 0; i < eksMenu.Length; i++)
+                        {
+                            Console.WriteLine(eksMenu[i]);
+                        }
+                        int eksMenuSecim = Convert.ToInt32(Console.ReadLine());
+
+                        Toplam += eksMenuFiyat[(eksMenuSecim - 1)];
+                        
+                        Console.Write("Başka ekstra istermisiniz..? (Y/N)");
+                        ConsoleKeyInfo cevap = Console.ReadKey();
+                        if (cevap.Key == ConsoleKey.N)
+                        {
+                            break;
+                        }
+                    } while (true);
+                }
+
+                Console.Clear();
+                Console.WriteLine($"Toplam Tutar=> {Toplam.ToString("N2")}");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.ReadKey();
+
+
+
+
+
+        }
+    }
+}
